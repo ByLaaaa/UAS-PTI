@@ -1,35 +1,52 @@
-import Logo from '../../assets/img/Jakarta.png'
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import Logo from '../../assets/img/Jakarta.png';
 import KerakTelor from '../../assets/img/KerakTelor.jpeg';
+import Monas from '../../assets/img/monas2.png';
 
-function Carousel (){
-    return (
-      <div id="default-carousel" className="relative w-full" data-carousel="slide">
-          <div className="relative h-56 overflow-hidden md:h-96">
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                  <img src={Logo} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-              </div> 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                  <img src={KerakTelor} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-              </div> 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                  <img src={Logo} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-              </div> 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                  <img src={Logo} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-              </div> 
-              <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                  <img src={Logo} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-              </div>
-          </div>
-          <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-              <button type="button" className="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-              <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-              <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-              <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-              <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-          </div>
+function Carousel() {
+  gsap.config({ trialWarn: false });
+
+  const comp = useRef(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      let mm = gsap.matchMedia();
+
+      mm.add({
+        isMobile: "(max-width: 500px)",
+        isDesktop: "(min-width: 501px)",
+      }, (context) => {
+        console.log(context.conditions);
+        let { isMobile, isDesktop } = context.conditions;
+
+        const t1 = gsap.timeline();
+        t1.to(
+          ["#title-1", "#title-2", "#title-3", "#title-4"],
+          {
+            opacity: isMobile ? "100%" : "100%",
+            x: isMobile ? "+=20" : "+=320",
+            stagger: isMobile ? 0.8 : 0.6,
+          }
+        );
+      }, comp);
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div className="relative" ref={comp}>
+      <div className="flex">
+        <div className="flex flex-col m-4">
+          <span className="md:text-6xl font-bold text-3xl" id="title-1">WELCOME</span>
+          <span className="md:text-7xl font-bold text-4xl" id="title-2">TO</span>
+          <span className="md:text-8xl font-bold text-5xl" id="title-3">JAKARTA</span>
+          <span className="md:text-9xl font-bold text-6xl" id="title-4">CULINARY</span>
+        </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default Carousel;

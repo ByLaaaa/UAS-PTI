@@ -15,6 +15,9 @@ export default {
       'bis': '#FC351C',
       'none': '#EB30A2',
       'pesisir': '#00AAFF'
+    },
+    fontFamily: {
+      jakarta: ["Plus Jakarta Sans", "sans-serif"],
     }
   },
   plugins: [
