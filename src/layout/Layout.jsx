@@ -1,11 +1,11 @@
 import Navigation from './navigasi'
-import Carousel from './base/carousel'
+import Carousel from './Component/carousel'
 
 const Layout = ({children}) => {
     return (
         <>
             <Navigation />
-            {/* <Carousel /> */}
+            <Carousel />
         </>
     )
 }
