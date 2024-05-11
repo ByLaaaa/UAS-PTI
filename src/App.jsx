@@ -1,16 +1,21 @@
 import { useState } from 'react'
 import './App.css'
-import Layout from './layout/Layout'
-import Footer from './layout/Component/Footer'
+import Home from './layout/Pages/Home'
+import Culinary from './layout/Pages/Culinary'
+import Recipes from './layout/Pages/Recipes'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Layout/>
-      <Footer/>
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/culinary' element={<Culinary/>} />
+        <Route path='/recipes' element={<Recipes/>} />
+      </Routes>
+    </Router>
   )
 }
 
