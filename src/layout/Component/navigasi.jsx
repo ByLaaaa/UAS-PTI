@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import jakartaLogo from "../../assets/img/+Jakarta_Logo.svg";
+import jakartaLogo from "../../assets/img/jcul.svg";
 import './nav.css';
 import { useNavigate } from "react-router-dom";
 
@@ -31,7 +31,7 @@ function Navigation () {
                 <a onClick={() => navigate('/recipes')} className="font-jakarta block py-2 px-5 rounded-2xl transition ease-in-out hover:-translate-y-1 hover:scale-105 md:hover:bg-pesisir md:hover:rounded-2xl md:hover:p-1 font-bold md:p-0 ">Recipes</a>
               </li>
               <li>
-                <a href="#" className="font-jakarta block py-2 px-5 rounded-2xl transition ease-in-out hover:-translate-y-1 hover:scale-105 md:hover:bg-pesisir md:hover:rounded-2xl md:hover:p-1 font-bold md:p-0 ">About DevS</a>
+                <a onClick={() => navigate('/devS')} className="font-jakarta block py-2 px-5 rounded-2xl transition ease-in-out hover:-translate-y-1 hover:scale-105 md:hover:bg-pesisir md:hover:rounded-2xl md:hover:p-1 font-bold md:p-0 ">About DevS</a>
               </li>
             </ul>
           </div>

@@ -3,7 +3,9 @@ import './App.css'
 import Home from './layout/Pages/Home'
 import Culinary from './layout/Pages/Culinary'
 import Recipes from './layout/Pages/Recipes'
+import DevS from './layout/Pages/AboutDev'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import CardsCul from './layout/Component/culinary/Cards'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +16,8 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/culinary' element={<Culinary/>} />
         <Route path='/recipes' element={<Recipes/>} />
+        <Route path='/devS' element={<DevS/>} />
+        <Route path='#cardsCul' element={<CardsCul/>} />
       </Routes>
     </Router>
   )
