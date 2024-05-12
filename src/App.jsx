@@ -6,6 +6,7 @@ import Recipes from './layout/Pages/Recipes'
 import DevS from './layout/Pages/AboutDev'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import CardsCul from './layout/Component/culinary/Cards'
+import { Axios } from 'axios'
 
 function App() {
   const [count, setCount] = useState(0)
