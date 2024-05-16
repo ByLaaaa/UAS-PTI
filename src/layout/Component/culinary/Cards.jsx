@@ -1,25 +1,27 @@
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import Uduk from '../../../../public/assets/img/NasiUduk.jpg'
 
-function Cards() {
-    const navigate = useNavigate()
+
+function Cards({img, name, shortDesc}) {
+  console.log(img)
     return (
-        <>
-        <div className="flex justify-center">                
-            <nav aria-label="Page navigation example">
-              <ul class="inline-flex -space-x-px text-sm">
-                <li>
-                  <a onClick={'/page1'} class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white hover:bg-blue-100 hover:text-blue-700">1</a>
-                </li>
-                <li>
-                  <a onClick={'/page2'} class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white hover:bg-blue-100 hover:text-blue-700">2</a>
-                </li>
-                <li>
-                  <a onClick={'/page3'} class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white hover:bg-blue-100 hover:text-blue-700">3</a>
-                </li>
-              </ul>
-            </nav>
+        <div className="flex flex-col">
+            <div className="card w-96 bg-base-100 shadow-xl">
+              <figure><img src={img} alt="Shoes" /></figure>
+              <div className="card-body">
+                <h2 className="card-title">
+                  {name}
+                </h2>
+                <p>{shortDesc}</p>
+                <div className="card-actions justify-end">
+                  {/* <div className="badge badge-outline">{kategori}</div>  */}
+                  <div className="badge badge-outline">Products</div>
+                </div>
+              </div>
+            </div>
         </div>
-        </>
     )
 }
 

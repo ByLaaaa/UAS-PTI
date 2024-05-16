@@ -14,7 +14,9 @@ export default {
       'gigi': '#FEB52B',
       'bis': '#FC351C',
       'none': '#EB30A2',
-      'pesisir': '#00AAFF'
+      'pesisir': '#00AAFF',
+      'soft-dark' : '#262524',
+      'white-oat' : '#c3c6b1'
     },
     fontFamily: {
       jakarta: ["Plus Jakarta Sans", "sans-serif"],

@@ -1,13 +1,12 @@
-import Navigation from '../Component/navigasi'
-import Footer from '../Component/Footer'
+import Layout from '../Layout'
 import About from '../Component/aboutDev/About'
 
 function DevS() {
     return (
         <>
-        <Navigation />
-        <About />   
-        <Footer />
+        <Layout >
+            <About />   
+        </Layout>
         </>
     )
 }

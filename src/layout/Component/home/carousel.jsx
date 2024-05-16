@@ -1,9 +1,11 @@
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
-import Monas from '../../assets/img/monasBener.png'
+import Monas from '../../../assets/img/monasBener.png'
+import { ScrollTrigger } from 'gsap/all';
 
 function Carousel() {
   gsap.config({ trialWarn: false });
+  gsap.registerPlugin(ScrollTrigger)
 
   const comp = useRef(null);
 
@@ -19,31 +21,27 @@ function Carousel() {
         let { isMobile, isDesktop } = context.conditions;
 
         const t1 = gsap.timeline();
-        t1.from(
+        t1.fromTo(
           ["#title-1", "#title-2", "#title-3", "#title-4"],
           {
+            scrollTrigger : {
+              trigger: ["#title-1", "#title-2", "title-3", "title-4"],
+            },
             opacity: 0,
-          }
-        ).to(
-          ["#title-1", "#title-2", "#title-3", "#title-4"],
+          },
           {
+            scrollTrigger : {
+              trigger: ["#title-1", "#title-2", "title-3", "title-4"],
+              start : 'center center +=350',
+              end : '+=500',
+              toggleActions: 'restart none none restart'
+            },
             opacity: isMobile ? "100%" : "100%",
             x: isMobile ? "+=20" : "+=320",
-            stagger: isMobile ? 0.8 : 0.6,
+            stagger: isMobile ? 0.8 : 0.7,
           }
-        ).from(
-          "#monas",
-          {
-            opacity: 0,
-            x: isMobile ? "-=20" : "-=900",
-            stagger: isMobile? 0.8 : 0.6,
-          }
-        ).to(
-          "#monas",
-          {
-            x: isMobile ? "-=20" : "-=820",
-            stagger: isMobile? 0.8 : 0,
-          }
+        ).fromTo(
+          "#monas",{opacity: 0, x: isMobile ? "-=20" : "-=662", stagger: isMobile? 0.8 : 0.6}, {opacity: 1 ,x: isMobile ? "+=920" : "-=92", stagger: isMobile? 0.8 : 0.9}
         )
       }, comp);
     });
@@ -52,8 +50,8 @@ function Carousel() {
   }, []);
 
   return (
-    <div className="relative min-h-screen" ref={comp}>
-      <div className="flex justify-center m-16">
+    <div className="relative min-h-screen items-center" ref={comp}>
+      <div className="flex justify-center m-16 pt-24">
         <div className="flex flex-col m-4">
           <span className="md:text-6xl font-bold text-3xl" id="title-1">WELCOME</span>
           <span className="md:text-7xl font-bold text-4xl" id="title-2">TO</span>
@@ -61,7 +59,7 @@ function Carousel() {
           <span className="md:text-9xl font-bold text-6xl" id="title-4">CULINARY</span>
         </div>
         <div className="flex flex-col">
-          <img src={Monas} className='w-96' id='monas' alt="Monas" />
+          <img src={Monas} className='w-56 md:w-96' id='monas' alt="Monas" />
         </div>
       </div>
     </div>

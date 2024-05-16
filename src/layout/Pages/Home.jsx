@@ -1,13 +1,14 @@
-import Navigation from '../Component/navigasi'
-import Carousel from '../Component/carousel'
+import Layout from '../Layout'
+import Carousel from '../Component/home/carousel'
 import About from '../Component/home/About'
 
-const Home = ({children}) => {
+const Home = () => {
     return (
         <>
-        <Navigation />
-        <Carousel />
-        <About />
+        <Layout>
+            <Carousel />
+            <About />
+        </Layout>
         </>
     )
 }

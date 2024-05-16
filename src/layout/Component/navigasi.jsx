@@ -20,18 +20,18 @@ function Navigation () {
               </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
               <li>
-                <a onClick={() => navigate('/')} className="font-jakarta block py-2 px-5 rounded-2xl transition ease-in-out hover:-translate-y-1 hover:scale-105 md:hover:bg-pesisir md:hover:rounded-2xl md:hover:p-1 font-bold md:p-0" aria-current="page">Home</a>
+                <a onClick={() => navigate('/')} className="font-jakarta block py-2 px-5 rounded-2xl hover:scale-105 md:hover:bg-betawi md:hover:rounded-2xl font-bold md:p-0 md:p-2" aria-current="page">Home</a>
               </li>
               <li>
-                <a onClick={() => navigate('/culinary')} className="font-jakarta block py-2 px-5 rounded-2xl transition ease-in-out hover:-translate-y-1 hover:scale-105 md:hover:bg-pesisir md:hover:rounded-2xl md:hover:p-1 font-bold md:p-0 ">Culinary</a>
+                <a onClick={() => navigate('/culinary')} className="font-jakarta block py-2 px-5 rounded-2xl hover:scale-105 md:hover:bg-betawi md:hover:rounded-2xl font-bold md:p-0 md:p-2 ">Culinary</a>
               </li>
               <li>
-                <a onClick={() => navigate('/recipes')} className="font-jakarta block py-2 px-5 rounded-2xl transition ease-in-out hover:-translate-y-1 hover:scale-105 md:hover:bg-pesisir md:hover:rounded-2xl md:hover:p-1 font-bold md:p-0 ">Recipes</a>
+                <a onClick={() => navigate('/recipes')} className="font-jakarta block py-2 px-5 rounded-2xl hover:scale-105 md:hover:bg-betawi md:hover:rounded-2xl font-bold md:p-0 md:p-2 ">Recipes</a>
               </li>
               <li>
-                <a onClick={() => navigate('/devS')} className="font-jakarta block py-2 px-5 rounded-2xl transition ease-in-out hover:-translate-y-1 hover:scale-105 md:hover:bg-pesisir md:hover:rounded-2xl md:hover:p-1 font-bold md:p-0 ">About DevS</a>
+                <a onClick={() => navigate('/devS')} className="font-jakarta block py-2 px-5 rounded-2xl hover:scale-105 md:hover:bg-betawi md:hover:rounded-2xl font-bold md:p-0 md:p-2 ">About DevS</a>
               </li>
             </ul>
           </div>

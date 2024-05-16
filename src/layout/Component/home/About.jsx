@@ -1,4 +1,3 @@
-import Footer from '../Footer';
 import Dummy from '../../../assets/img/KerakTelor.jpeg'
 
 
@@ -32,7 +31,6 @@ function About() {
                 </div>
             </div>
         </div>
-        <Footer/>
         </>
     );
 }
