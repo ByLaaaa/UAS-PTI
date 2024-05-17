@@ -50,19 +50,25 @@ function Carousel() {
   }, []);
 
   return (
-    <div className="relative min-h-screen items-center" ref={comp}>
-      <div className="flex justify-center m-16 pt-24">
-        <div className="flex flex-col m-4">
-          <span className="md:text-6xl font-bold text-3xl" id="title-1">WELCOME</span>
-          <span className="md:text-7xl font-bold text-4xl" id="title-2">TO</span>
-          <span className="md:text-8xl font-bold text-5xl" id="title-3">JAKARTA</span>
-          <span className="md:text-9xl font-bold text-6xl" id="title-4">CULINARY</span>
-        </div>
-        <div className="flex flex-col">
-          <img src={Monas} className='w-56 md:w-96' id='monas' alt="Monas" />
+    <>
+    <section className={`bg-cover bg-no-repeat bg-[url('../../../../public/assets/img/JakartaNight.jpg')] bg-gray-700 bg-blend-multiply h-screen w-cover`}>
+      <div className="relative" ref={comp}>
+        <div className="flex justify-center">
+          <div className="flex justify-center my-48">
+            <div className="flex flex-col">
+              <span className="md:text-6xl font-bold text-white text-3xl" id="title-1">WELCOME</span>
+              <span className="md:text-7xl font-bold text-white text-4xl" id="title-2">TO</span>
+              <span className="md:text-8xl font-bold text-white text-5xl" id="title-3">JAKARTA</span>
+              <span className="md:text-9xl font-bold text-white text-6xl" id="title-4">CULINARY</span>
+            </div>
+            <div className="flex flex-col">
+              <img src={Monas} className='w-56 md:w-96' id='monas' alt="Monas" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    </>
   );
 }
 
