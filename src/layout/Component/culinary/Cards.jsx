@@ -5,17 +5,13 @@ import Gmap from './Maps/Gmap';
 
 
 function Cards({img, name, shortDesc, desc, price, category, count}) {
-  const [openModal, setOpenModal] = useState(false);  
-  const [placesData, setPlaces] = useState([])
-    useEffect(() => {
-        setPlaces(placesData)
-    }, [])
+  const [openModal, setOpenModal] = useState(false);
   
   return (
         <>
-        <button className="flex flex-col text-wrap" onClick={() => setOpenModal(true)}>
-            <div className="card w-96 bg-base-100 shadow-xl">
-              <figure><img src={img} alt="Shoes" /></figure>
+        <button className="flex flex-col text-wrap" onClick={() => document.getElementById(`modals_menu-${count}`).showModal()}>
+            <div className="card w-96 h-96 bg-base-100 shadow-xl">
+              <figure><img src={img} alt="Shoes" className="object-center" /></figure>
               <div className="card-body">
                 <h2 className="card-title">
                   {name}
@@ -29,35 +25,22 @@ function Cards({img, name, shortDesc, desc, price, category, count}) {
             </div>
         </button>
 
-        <Modal show={openModal} onClose={() => setOpenModal(false)}>
-              <Modal.Body>
-                <div className="space-y-32">
-                  <div className="flex flex-row gap-8">
-                    <img src={img} className="w-6/12"/>
-                    <div className="flex flex-col gap-4">
-                      <span className="text-2xl">
-                        {name}
-                      </span>
-                      <span className="text-m">
-                        {desc}
-                      </span>
-                      <span className="text-semibold text-m">
-                        {price}
-                      </span>
-                      {placesData.map((placesData) => (
-                        <Gmap longit={placesData.longit} latit={placesData.latit} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Modal.Body>
-    
-              <Modal.Footer>
-                <Button color="gray" onClick={() => setOpenModal(false)}>
-                  Close
-                </Button>
-              </Modal.Footer>
-          </Modal>
+        <dialog id={`modals_menu-${count}`} className="modal">
+          <div className="modal-box mih-h-screen w-screen">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <div className="flex flex-row gap-8">
+              <img src={img} className="w-1/2" alt="" />
+              <div className="flex flex-col gap-4">
+                <span className="text-2xl">{name}</span>
+                <span className="text-l">{desc}</span>
+                <span className="text-xl">{price}</span>
+              </div>
+            </div>
+          </div>
+        </dialog>
         </>
     )
 }

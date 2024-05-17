@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import Cards from '../Component/culinary/Cards';
 import Layout from '../Layout';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function Culinary() {
+    const { id } = useParams();
 
     const [data, setData] = useState(null);
     const Url = "https://api-resep-eight.vercel.app/food";
