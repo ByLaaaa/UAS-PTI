@@ -4,8 +4,8 @@ const flowbite = require("flowbite-react/tailwind");
 export default {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    'node_modules/flowbite-react/lib/esm/**/*.js',
-    flowbite.plugin(),
+    'node_modules/flowbite-react/dist/esm/**/*.js',
+    flowbite.content(),
   ],
   theme: {
     colors: {
@@ -23,6 +23,7 @@ export default {
     }
   },
   plugins: [
+    flowbite.plugin(),
     require('flowbite/plugin'),
     require("daisyui")
   ],

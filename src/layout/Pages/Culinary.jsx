@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Cards from '../Component/culinary/Cards';
 import Layout from '../Layout';
 import axios from 'axios';
-import Food from '../Component/culinary/Food';
+
 function Culinary() {
 
     const [data, setData] = useState(null);
@@ -27,15 +27,19 @@ function Culinary() {
             <About />
             <div className="flex flex-col gap-5 pt-12">
                 <div className="flex flex-col gap-5">
-                    {console.log(data)}
+                    {console.log(data)} 
                     <div className="flex flex-wrap justify-center gap-12">
                         {data && (
-                            Food.map((item) => (
+                            data.map((Food) => (
                                 <Cards
-                                    key={item.id}
-                                    name={item.nama} 
-                                    shortDesc={item.shortDesc}
-                                    img={item.image}
+                                    key={Food.id}
+                                    name={Food.nama} 
+                                    shortDesc={Food.shortDesc}
+                                    img={Food.image}
+                                    desc={Food.desc}
+                                    price={Food.harga}
+                                    category={Food.Kategori}
+                                    count={Food.id}
                                 />
                             ))
                         )}
