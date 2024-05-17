@@ -51,7 +51,7 @@ function Carousel() {
 
   return (
     <>
-    <section className={`bg-cover bg-no-repeat bg-[url('../../../../public/assets/img/JakartaNight.jpg')] bg-gray-700 bg-blend-multiply h-screen w-cover`}>
+    <section className={`bg-cover bg-no-repeat bg-[url('/assets/img/JakartaNight.jpg')] bg-gray-700 bg-blend-multiply h-screen w-cover`}>
       <div className="relative" ref={comp}>
         <div className="flex justify-center">
           <div className="flex justify-center my-48">
