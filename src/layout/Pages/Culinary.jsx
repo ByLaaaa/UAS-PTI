@@ -7,7 +7,9 @@ import { useParams } from 'react-router-dom';
 
 function Culinary() {
     const { id } = useParams();
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filteredData, setFilteredData] = useState([]);
     const Url = "https://api-resep-eight.vercel.app/food";
 
     useEffect(() => {
@@ -15,6 +17,7 @@ function Culinary() {
             try {
                 const response = await axios.get(Url);
                 setData(response.data);
+                setFilteredData(response.data);
             } catch(e) {
                 console.log(e);
             }
@@ -22,15 +25,25 @@ function Culinary() {
         fetch();
     }, []);
 
+    useEffect(() => {
+        setFilteredData(
+            data.filter(food => 
+                food.nama.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+        );
+    }, [searchQuery, data]);
+
     return (
         <Layout>
             <About />
             <div className="flex flex-col gap-5 pt-12">
+            <div className="flex justify-center">
+                <input type="text" placeholder="Search menu..."value={searchQuery}onChange={(e) => setSearchQuery(e.target.value)} className="input input-bordered w-full max-w-xs" />
+            </div>
                 <div className="flex flex-col gap-5">
-                    {console.log(data)}
                     <div className="flex flex-wrap justify-center gap-12">
-                        {data && (
-                            data.map((Food) => (
+                        {filteredData && (
+                            filteredData.map((Food) => (
                                 <Cards
                                     key={Food.id}
                                     name={Food.nama}

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function ShadowCard({ img, id, name }) {
+function ShadowCard({ img, id, name, kategori }) {
   const navigate = useNavigate();
 
   return (
@@ -9,6 +9,11 @@ function ShadowCard({ img, id, name }) {
         <figure><img src={img} alt={name} /></figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
+          <div className="card-actions justify-start">
+            {kategori && kategori.map((cat, index) => (
+              <div key={index} className="badge badge-outline">{cat}</div>
+            ))}
+          </div>
           <div className="card-actions justify-end">
             <button className="btn btn-primary" onClick={() => navigate(`/recipes/${id}`)}>Check Recipes</button>
           </div>

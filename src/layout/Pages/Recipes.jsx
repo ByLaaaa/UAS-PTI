@@ -7,32 +7,41 @@ import ShadowCard from '../Component/recipes/ShadowCard';
 
 function Recipes() {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const Url = "https://api-resep-eight.vercel.app/food";
 
   useEffect(() => {
     axios.get(Url).then(response => {
       setData(response.data);
-      console.log(response.data);
+      setFilteredData(response.data); // Initialize filtered data
     });
   }, []);
+
+  const handleCategoryChange = (selectedCategories) => {
+    if (selectedCategories.length === 0) {
+      setFilteredData(data);
+    } else {
+      setFilteredData(data.filter(food => 
+        selectedCategories.some(cat => food.kategori.includes(cat))
+      ));
+    }
+  };
 
   return (
     <Layout>
       <div className="flex flex-col">
-        <div className="py-20 pb-52">
-          <About />
-        </div>
+        <About />
         <div className="flex flex-col gap-5 pt-12">
           <div className="flex flex-col gap-5">
-            <Filter />
-            {console.log(data)}
+            <Filter onCategoryChange={handleCategoryChange} />
             <div className="flex flex-wrap justify-center gap-12">
-              {data && data.map((Food) => (
+              {filteredData && filteredData.map((Food) => (
                 <ShadowCard
                   key={Food.id}
                   id={Food.id}
                   name={Food.nama}
                   img={Food.image}
+                  kategori={Food.kategori}
                 />
               ))}
             </div>

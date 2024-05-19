@@ -1,23 +1,44 @@
-import { useNavigate } from "react-router-dom"
+// Filter.js
+import React, { useState, useEffect } from 'react';
 
-function Filter() {
-    const navigate = useNavigate();
+function Filter({ onCategoryChange }) {
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-    return (
-        <>
-        <div className="flrx items-center">
-            <div class="flex items-center justify-center py-4 md:py-8 flex-wrap">
-                <button type="button" className="text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 ">All categories</button>
-                <button type="button" className="text-gray-900 border border-white hover:border-gray-200 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3">Shoes</button>
-                <button type="button" className="text-gray-900 border border-white hover:border-gray-200 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3">Bags</button>
-                <button type="button" className="text-gray-900 border border-white hover:border-gray-200 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3">Electronics</button>
-                <button type="button" className="text-gray-900 border border-white hover:border-gray-200 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3">Gaming</button>
-            </div>
-            
-            
-        </div>
-        </>
-    )
+  useEffect(() => {
+    // Mendapatkan daftar kategori dari API atau sumber lain
+    const fetchCategories = async () => {
+      const response = await axios.get('https://api-resep-eight.vercel.app/categories');
+      setCategories(response.data);
+    };
+
+    fetchCategories();
+  }, []);
+
+  const handleCategoryClick = (category) => {
+    let updatedCategories;
+    if (selectedCategories.includes(category)) {
+      updatedCategories = selectedCategories.filter(cat => cat !== category);
+    } else {
+      updatedCategories = [...selectedCategories, category];
+    }
+    setSelectedCategories(updatedCategories);
+    onCategoryChange(updatedCategories);
+  };
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {categories.map((category, index) => (
+        <button
+          key={index}
+          className={`btn ${selectedCategories.includes(category) ? 'btn-primary' : 'btn-outline'}`}
+          onClick={() => handleCategoryClick(category)}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+  );
 }
 
-export default Filter
+export default Filter;
