@@ -5,7 +5,6 @@ import Culinary from './layout/Pages/Culinary'
 import Recipes from './layout/Pages/Recipes'
 import DevS from './layout/Pages/AboutDev'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Resep from './layout/Component/recipes/ViewResep'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,7 +16,6 @@ function App() {
         <Route path='/culinary' element={<Culinary/>} />
         <Route path='/recipes' element={<Recipes/>} />
         <Route path='/devS' element={<DevS/>} />
-        <Route path='/recipes/:id' element={<Resep/>}></Route>
       </Routes>
     </Router>
   )
