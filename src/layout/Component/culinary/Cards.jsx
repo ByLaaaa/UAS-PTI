@@ -33,6 +33,11 @@ function Cards({ img, name, shortDesc, desc, price, category, count }) {
             <img src={img} className="w-1/2" alt={name} />
             <div className="flex flex-col gap-4">
               <span className="text-l">{desc}</span>
+              <div className="card-actions justify-end">
+                {category && category.map((cat, index) => (
+                  <div key={index} className="badge badge-outline">{cat}</div>
+                ))}
+              </div>
               <span className="text-xl">{price}</span>
             </div>
           </div>
