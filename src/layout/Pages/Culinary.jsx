@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 
 function Culinary() {
     const { id } = useParams();
-
     const [data, setData] = useState(null);
     const Url = "https://api-resep-eight.vercel.app/food";
 
@@ -15,32 +14,31 @@ function Culinary() {
         const fetch = async () => {
             try {
                 const response = await axios.get(Url);
-                setData(response.data);        
-            }catch(e){
-                console.log(e); 
+                setData(response.data);
+            } catch(e) {
+                console.log(e);
             }
         }
         fetch();
-    }, [])
+    }, []);
 
     return (
-        <>
         <Layout>
             <About />
             <div className="flex flex-col gap-5 pt-12">
                 <div className="flex flex-col gap-5">
-                    {console.log(data)} 
+                    {console.log(data)}
                     <div className="flex flex-wrap justify-center gap-12">
                         {data && (
                             data.map((Food) => (
                                 <Cards
                                     key={Food.id}
-                                    name={Food.nama} 
+                                    name={Food.nama}
                                     shortDesc={Food.shortDesc}
                                     img={Food.image}
                                     desc={Food.desc}
                                     price={Food.harga}
-                                    category={Food.Kategori}
+                                    category={Food.Kategori} // Assuming Food.Kategori is an array
                                     count={Food.id}
                                 />
                             ))
@@ -49,8 +47,7 @@ function Culinary() {
                 </div>
             </div>
         </Layout>
-        </>
     );
 }
 
-export default Culinary
+export default Culinary;
