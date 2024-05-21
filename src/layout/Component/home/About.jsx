@@ -26,7 +26,6 @@ function About() {
             scrollTrigger : {
               trigger: ["#head"],
               start : 'center center +=700',
-              markers: true,
               scrub: true,
               toggleActions: 'restart none none restart'
             },
@@ -37,7 +36,6 @@ function About() {
             scrollTrigger : {
               trigger: ["#head"],
               start : 'center center -=700',
-              markers: true,
               scrub: true,
               end : '+=320',
               toggleActions: 'restart none none restart'
@@ -59,7 +57,6 @@ function About() {
             duration: 4,
             scrollTrigger: {
               trigger: '#Card-1',
-              markers: true,
               scrub: true,
               toggleActions: 'restart none none restart'
             },
@@ -76,7 +73,6 @@ function About() {
             duration: 4,
             scrollTrigger: {
               trigger: '#Card-2',
-              markers: true,
               scrub: true,
               toggleActions: 'restart none none restart'
             },
